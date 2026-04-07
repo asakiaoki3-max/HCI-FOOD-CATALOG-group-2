@@ -1,0 +1,283 @@
+
+:root{
+    --color-1: #0f1016;
+    --text-color: #f0f0f0;
+    --accent-color: #009688;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav{
+    height: 60px;
+    background-color: var(--color-1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.links-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+nav a:hover{
+    background-color: var(--accent-color);
+}
+
+nav .food-link{
+    margin-right: auto;
+}
+
+nav svg{
+    fill: var(--text-color)
+}
+
+#sidebar-active{
+    display: none;
+}
+.open-sidebar-button, .close-sidebar-button{
+    display: none;
+}
+
+@media(max-width: 600px){
+    .links-container{
+        flex-direction: column;
+        align-items: flex-start;
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 300px;
+
+        background-color: var(--color-1);
+        box-shadow: -5px 0 5px rgba(0,0,0,0.25);
+
+        transition: 0.75s ease-out;
+    }
+
+    nav a{
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+    }
+
+    .open-sidebar-button, .close-sidebar-button{
+        display: block;
+        padding: 20px;
+    }
+
+    #sidebar-active:checked ~ .links-container{
+        right: 0;
+    }
+
+    #sidebar-active:checked ~ #overlay{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+
+    .banner{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.brand {
+    width: auto;
+    cursor: pointer;
+    color: #009688;
+    font-size: 20px;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(background.png);
+    background-size: cover;
+    background-position: center;
+}
+.content{
+    width: 100%;
+    position: absolute;
+    
+    text-align: center;
+    color: #fff;
+}
+
+.content h1{
+    font-size: 00%;
+    margin-top: 30px;
+}
+
+.content p {
+    margin: 20px auto;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 30px;
+}
+
+.a2, .a1, .a3, .a4{
+    width: 80px;
+    padding: 5px;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 10px;
+}
+
+.b2, .b1{
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    margin: 0 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+span{
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    z-index: -1;
+}
+
+button:hover span{
+    width: 100%;
+}
+
+button :hover{
+    border: none;
+}
+
+.carousel{
+    margin: 40px auto;
+    width: 90%;
+    border: 5px solid(--accent-color);
+    display: flex;
+    overflow-x: auto;
+   
+}
+
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    animation: spin 50s infinite linear;
+    padding-right: 1em;
+}
+
+.card{
+    flex: 0 0 5em;
+    height: 5em;
+    padding: 0.1em;
+    font-size: 3em;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+}
+
+.image{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 16/9;
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image h6{
+    position: absolute;
+    bottom: 50%;
+    left: auto;
+    right: auto;
+    color: #ffffff;
+    font-weight: bolder;
+    background: #000000e2;
+    padding:5px 10px ;
+}
+
+.image h5{
+    position: absolute;
+    bottom: 38%;
+    left: auto;
+    right: auto;
+    color: #4ef600;
+    background: #000000e2;
+    padding:5px 10px ;
+    font-size: 15px;
+}
+
+@keyframes spin {
+    from{translate: 0;}
+    to{translate: -100%;}
+}
+
+@media (min-width: 768px){
+    .card{
+        width: 48%;
+    }
+}
+@media (min-width: 1024px){
+    .card{
+        width: 30%;
+    }
+}
+
+h1{
+    color: #009688;
+}
+nav h1{
+    font-size: 25px;
+}
